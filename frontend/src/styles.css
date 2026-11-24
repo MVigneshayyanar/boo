@@ -355,11 +355,11 @@ h1, h2, h3, .serif {
   color: var(--ink-muted);
 }
 
-/* Product Grid — Compact Cards */
+/* Product Grid — Compact Single-Line Cards */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 12px;
 }
 
 .product-card {
@@ -375,7 +375,7 @@ h1, h2, h3, .serif {
 
 .product-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(31, 26, 23, 0.1);
+  box-shadow: 0 12px 24px rgba(31, 26, 23, 0.1);
 }
 
 .product-img-wrap {
@@ -396,49 +396,74 @@ h1, h2, h3, .serif {
 
 .product-badges {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
+  top: 6px;
+  left: 6px;
+  right: 6px;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   gap: 4px;
   pointer-events: none;
 }
 
+.product-badges .badge {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
 .product-body {
-  padding: 10px 12px 12px;
+  padding: 8px 10px 10px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   flex: 1;
 }
 
 .product-title {
   margin: 0;
-  font-size: 0.96rem;
+  font-size: 0.9rem;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .product-meta {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 4px;
-  font-size: 0.72rem;
+  overflow: hidden;
+  font-size: 0.66rem;
   color: var(--ink-muted);
 }
 
+.product-meta .badge {
+  font-size: 0.64rem;
+  padding: 2px 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .product-price {
-  font-size: 1.02rem;
+  font-size: 0.96rem;
   font-weight: 700;
   color: var(--gold-dark);
+  white-space: nowrap;
 }
 
 .product-actions {
   margin-top: auto;
-  padding-top: 10px;
+  padding-top: 6px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+
+.product-actions .btn-sm {
+  padding: 5px 7px;
+  font-size: 0.74rem;
+  white-space: nowrap;
 }
 
 /* Table */
