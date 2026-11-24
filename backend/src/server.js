@@ -11,8 +11,10 @@ import { ensureSeedAssets } from './seedAssets.js';
 const app = express();
 const PORT = process.env.PORT || 4000;
 const uploadsDir = path.resolve('uploads');
-fs.mkdirSync(uploadsDir, { recursive: true });
-ensureSeedAssets(uploadsDir);
+if (!process.env.VERCEL) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+  ensureSeedAssets(uploadsDir);
+}
 
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
@@ -815,6 +817,10 @@ app.delete('/api/bookings/:id', requireSupabase, async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Atelier Rental Backend (Supabase Multi-Store) running on http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Atelier Rental Backend (Supabase Multi-Store) running on http://localhost:${PORT}`);
+  });
+}
+
+export default app;
